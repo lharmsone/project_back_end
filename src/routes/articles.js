@@ -12,53 +12,53 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         // query the database
-        const query = Feedback.find({});
-        const feedbacks = await query.exec();
-        res.json(feedbacks);
+        const query = Article.find({});
+        const articles = await query.exec();
+        res.json(articles);
     } catch(e) {
         res.json({error: true, message: e});
     }
 });
 
-router.post('/', async (req, res) => {
-    const newFeedbackData = {
-        title: req.body.title,
-        user: req.body.user,
-        labels: req.body.labels,
-    };
-    const feedback = new Feedback(newFeedbackData);
-    try {
-        const feedbackEntity = await feedback.save();
-        res.json(feedbackEntity);
-    } catch(e) {
-        res.json({error: true, message: e});
-    }
-});
+//router.post('/', async (req, res) => {
+ //   const newArticleData = {
+        //title: req.body.title,
+        //user: req.body.user,
+       // labels: req.body.labels,
+  //  };
+  //  const feedback = new Feedback(newFeedbackData);
+  //  try {
+  //      const feedbackEntity = await feedback.save();
+   //     res.json(feedbackEntity);
+  //  } catch(e) {
+  //      res.json({error: true, message: e});
+   // }
+//});
 
-router.put('/:id', async (req, res) => {
-    const { id } = req.params;
+//router.put('/:id', async (req, res) => {
+   // const { id } = req.params;
 
-    try {
-        const query = Feedback.findById(id);
-        const feedback = await query.exec();
-        if (!feedback) {
-            res.status(404).json({notFound: true});
-            return;
-        }
+   // try {
+    //    const query = Feedback.findById(id);
+   //     const feedback = await query.exec();
+    //    if (!feedback) {
+    //        res.status(404).json({notFound: true});
+    //        return;
+    //    }
 
         // updates the ojbect proerties
-        feedback.title = req.body.title;
-        feedback.user = req.body.user;
-        feedback.labels = req.body.labels;
+    //    feedback.title = req.body.title;
+    //    feedback.user = req.body.user;
+    //    feedback.labels = req.body.labels;
         
 
-        await feedback.save(); // triggers the save in the database
+    //    await feedback.save(); // triggers the save in the database
         
-        res.json(feedback);
-    } catch(e) {
-        res.json({error: true, message: e});
-    }
-});
+     //   res.json(feedback);
+    //} catch(e) {
+    //    res.json({error: true, message: e});
+  ////  }
+//});
 
 //router.delete('/:id', async (req, res) => {
 //    const { id } = req.params;

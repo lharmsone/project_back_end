@@ -6,10 +6,27 @@ const articleSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    user: {
+    image: {
         type: String,
         required: true,
     },
+    images: {
+        type: Array,
+        required: true,
+    },
+    textIntro: {
+        type: String,
+        required: true,
+    },
+    text: {
+        type: String,
+        required: true,
+    },
+    textLong: {
+        type: String,
+        required: true,
+    },
+       
     labels: {
         type: Array,
         default: [],
